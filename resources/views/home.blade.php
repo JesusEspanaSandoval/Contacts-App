@@ -3,7 +3,7 @@
 @section('content')
   <div class="d-flex justify-content-center">
     @forelse ($contacts as $contact)
-      <div class="card text-center" style="width: 20rem;">
+      <div class="card text-center mx-2" style="width: 20rem;">
         <div class="card-body">
           <h3 class="card-title">{{ $contact->name }}</h3>
           <h4 class="card-text">{{ $contact->phone_number }}</h4>
