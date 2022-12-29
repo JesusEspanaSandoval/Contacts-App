@@ -36,9 +36,14 @@ class ContactsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'phone_number' => 'required|regex:/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/'
+            'name' => "required",
+            'phone_number' => 'required|regex:/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/',
+            'email' => 'required|email',
+            'age' => 'required|min:1|max:120|numeric'
         ]);
+
+        Contact::create($request->all());
+        return redirect('/home');
     }
 
     /**
