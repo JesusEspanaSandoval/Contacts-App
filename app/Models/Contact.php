@@ -14,4 +14,6 @@ class Contact extends Model
         "email",
         "age",
     ];
+
+    protected $table = 'contacts';
 }
