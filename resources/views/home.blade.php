@@ -8,8 +8,12 @@
           <h3 class="card-title">{{ $contact->name }}</h3>
           <h4 class="card-text">{{ $contact->phone_number }}</h4>
           <div>
-            <a href="#" class="btn btn-danger me-2">Delete</a>
-            <a href="#" class="btn btn-info">Edit</a>
+            <form action="{{ route('contact.destroy', $contact->id) }}" method="post">
+              @csrf
+              @method('delete')
+              <button type="submit" class="btn btn-danger me-2">Delete</button>
+              <a href="#" class="btn btn-info">Edit</a>
+            </form>
           </div>
         </div>
       </div>

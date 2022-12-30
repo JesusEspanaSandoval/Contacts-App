@@ -24,7 +24,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        return view("contact");
+        return view("contacts.create");
     }
 
     /**
@@ -43,7 +43,7 @@ class ContactsController extends Controller
         ]);
 
         Contact::create($request->all());
-        return redirect('/home');
+        return redirect()->route('home');
     }
 
     /**
@@ -88,6 +88,7 @@ class ContactsController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect()->route('home');
     }
 }
