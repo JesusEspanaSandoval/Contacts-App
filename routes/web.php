@@ -25,6 +25,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/contact/create', [ContactsController::class, 'create'])->name('contact.create');
 
-Route::post('/create', [ContactsController::class, 'store'])->name('contact.store');
+Route::get('/contact/{contact}/edit', [ContactsController::class, 'edit'])->name('contact.edit');
+
+Route::post('/contact/store', [ContactsController::class, 'store'])->name('contact.store');
 
 Route::delete('/contact/{contact}/destroy', [ContactsController::class, 'destroy'])->name('contact.destroy');
+
+Route::put('/contact/{contact}/update', [ContactsController::class, 'update'])->name('contact.update');

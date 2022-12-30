@@ -35,14 +35,14 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => "required",
             'phone_number' => 'required|regex:/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/',
             'email' => 'required|email',
             'age' => 'required|min:1|max:120|numeric'
         ]);
 
-        Contact::create($request->all());
+        Contact::create($data);
         return redirect()->route('home');
     }
 
@@ -65,7 +65,7 @@ class ContactsController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('contacts.edit', compact('contact'));
     }
 
     /**
@@ -77,7 +77,15 @@ class ContactsController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $data = $request->validate([
+            'name' => "required",
+            'phone_number' => 'required|regex:/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/',
+            'email' => 'required|email',
+            'age' => 'required|min:1|max:120|numeric'
+        ]);
+
+        $contact->update($data);
+        return redirect()->route('home');
     }
 
     /**
