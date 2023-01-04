@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn () => view('welcome'));
 
 Auth::routes();
 
@@ -26,6 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/contact/create', [ContactsController::class, 'create'])->name('contact.create');
 
 Route::get('/contact/{contact}/edit', [ContactsController::class, 'edit'])->name('contact.edit');
+
+Route::get('/contact/{contact}/show', [ContactsController::class, 'show'])->name('contact.show');
 
 Route::post('/contact/store', [ContactsController::class, 'store'])->name('contact.store');
 

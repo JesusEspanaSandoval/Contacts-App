@@ -5,7 +5,8 @@
     @forelse ($contacts as $contact)
       <div class="card text-center mx-2" style="width: 20rem;">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
-          <h3 class="card-title">{{ $contact->name }}</h3>
+          <a href="{{ route('contact.show', $contact->id) }}"
+            class="card-title fs-3 text-decoration-none text-white">{{ $contact->name }}</a>
           <h4 class="card-text">{{ $contact->phone_number }}</h4>
           <div>
             <form action="{{ route('contact.destroy', $contact->id) }}" method="post">
