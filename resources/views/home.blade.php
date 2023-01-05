@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center flex-wrap">
     @forelse ($contacts as $contact)
-      <div class="card text-center mx-2" style="width: 20rem;">
+      <div class="card text-center m-2" style="width: 20rem;">
         <div class="card-body d-flex flex-column align-items-center justify-content-center">
           <a href="{{ route('contact.show', $contact->id) }}"
             class="card-title fs-3 text-decoration-none text-white">{{ $contact->name }}</a>

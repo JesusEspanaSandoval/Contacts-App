@@ -53,10 +53,13 @@
               @endif
             @else
               <li class="nav-item">
-                <a href="/home" class="nav-link">Home</a>
+                <a href="{{ route('home') }}" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="/contact/create" class="nav-link">Add contact</a>
+                <a href="{{ route('contact.create') }}" class="nav-link">Add contact</a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('contact.index') }}" class="nav-link">Contacts</a>
               </li>
               <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

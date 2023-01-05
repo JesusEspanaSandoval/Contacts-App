@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::limit(6)->latest()->get();
         return view('home', compact('contacts'));
     }
 }
