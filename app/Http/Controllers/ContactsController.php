@@ -14,8 +14,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
-        return view('contacts.index', compact('contacts'));
+        return view('contacts.index', ['contacts' => auth()->user()->contacts]);
     }
 
     /**
@@ -43,7 +42,7 @@ class ContactsController extends Controller
             'age' => 'required|min:1|max:120|numeric'
         ]);
 
-        Contact::create($data);
+        auth()->user()->contacts()->create($data);
         return redirect()->route('home');
     }
 

@@ -13,6 +13,7 @@ class Contact extends Model
         "phone_number",
         "email",
         "age",
+        "user_id",
     ];
 
     protected $table = 'contacts';
