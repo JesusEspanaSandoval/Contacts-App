@@ -3,15 +3,17 @@
 @section('content')
   <div class="d-flex flex-column">
     @forelse ($contacts as $contact)
-      <div class="d-flex justify-content-between border-1 border-dark border-top border-bottom p-2">
+      <div
+        class="d-flex flex-column flex-md-row text-center text-md-left justify-content-md-between justify-content-center border-1 border-dark border-top border-bottom p-2">
         <div>
-          <h4 class="ms-4">
+          <h4 class="ms-md-4">
             <a href="{{ route('contact.show', $contact->id) }}"
               class="text-white text-decoration-none">{{ $contact->name }}</a>
+              <br class="d-md-none" />
             {{ $contact->phone_number }}
           </h4>
         </div>
-        <form class="me-4" action="{{ route('contact.destroy', $contact->id) }}" method="post">
+        <form class="me-md-4" action="{{ route('contact.destroy', $contact->id) }}" method="post">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger me-2">Delete</button>
