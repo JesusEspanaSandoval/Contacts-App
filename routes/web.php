@@ -21,18 +21,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Contacts
-Route::get('/contacts', [ContactsController::class, 'index'])->name('contact.index');
-
-Route::get('/contact/create', [ContactsController::class, 'create'])->name('contact.create');
-
-Route::get('/contact/{contact}/edit', [ContactsController::class, 'edit'])->name('contact.edit');
-
-Route::get('/contact/{contact}/show', [ContactsController::class, 'show'])->name('contact.show');
-
-Route::post('/contact/store', [ContactsController::class, 'store'])->name('contact.store');
-
-Route::delete('/contact/{contact}/destroy', [ContactsController::class, 'destroy'])->name('contact.destroy');
-
-Route::put('/contact/{contact}/update', [ContactsController::class, 'update'])->name('contact.update');
+Route::resource('contact', ContactsController::class);
 
