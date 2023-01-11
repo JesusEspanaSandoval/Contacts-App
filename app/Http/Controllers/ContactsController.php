@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -33,16 +34,9 @@ class ContactsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
-        $data = $request->validate([
-            'name' => "required",
-            'phone_number' => 'required|regex:/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/',
-            'email' => 'required|email',
-            'age' => 'required|min:1|max:120|numeric'
-        ]);
-
-        auth()->user()->contacts()->create($data);
+        auth()->user()->contacts()->create($request->validated());
         return redirect()->route('home');
     }
 
@@ -77,17 +71,10 @@ class ContactsController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(StoreContactRequest $request, Contact $contact)
     {
         $this->authorize('view', $contact);
-        $data = $request->validate([
-            'name' => "required",
-            'phone_number' => 'required|regex:/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/',
-            'email' => 'required|email',
-            'age' => 'required|min:1|max:120|numeric'
-        ]);
-
-        $contact->update($data);
+        $contact->update($request->validated());
         return redirect()->route('home');
     }
 

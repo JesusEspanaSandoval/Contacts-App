@@ -10,7 +10,7 @@
             <a href="{{ route('contact.show', $contact->id) }}"
               class="text-white text-decoration-none">{{ $contact->name }}</a>
               <br class="d-md-none" />
-            {{ $contact->phone_number }}
+            {{ $contact->phone_number }}   
           </h4>
         </div>
         <form class="me-md-4" action="{{ route('contact.destroy', $contact->id) }}" method="post">
@@ -21,7 +21,7 @@
         </form>
       </div>
     @empty
-      <div class="card text-center" style="width: 20rem;">
+      <div class="card text-center align-self-center" style="width: 20rem;">
         <div class="card-body">
           <h4 class="card-text">You don't have contacts</h4>
           <a href="{{ route('contact.create') }}" class="btn btn-info">Add a contact</a>
